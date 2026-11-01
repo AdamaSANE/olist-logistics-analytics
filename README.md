@@ -3,9 +3,9 @@
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
 ![Pandas](https://img.shields.io/badge/Pandas-Data_Wrangling-150458?style=for-the-badge&logo=pandas)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter)
-![Tableau](https://img.shields.io/badge/Tableau-Dashboard-E97627?style=for-the-badge&logo=tableau)
+![Seaborn](https://img.shields.io/badge/Seaborn-Data_Viz-4C72B0?style=for-the-badge)
 
-Ce projet analyse les performances logistiques et l'impact des délais de livraison sur la satisfaction client, à partir du jeu de données public du e-commerçant brésilien Olist.
+Ce projet analyse les performances logistiques et l'impact des délais de livraison sur la satisfaction client, à partir du jeu de données public du e-commerçant brésilien Olist. Le processus complet, de l'extraction des données à la visualisation, est réalisé 100% en Python.
 
 ## 🎯 Méthodologie STAR
 
@@ -15,21 +15,42 @@ Dans le secteur du e-commerce, la chaîne d'approvisionnement est un facteur cri
 
 ### 📋 Tâche (Task)
 
-La première phase de ce projet consistait à construire un pipeline de préparation de données (ETL). L'objectif : extraire les données brutes de plusieurs tables, nettoyer les formats incohérents (notamment les dates), et modéliser une vue unifiée à 360° ("Gold Table") prête pour la visualisation.
+Ce projet de bout en bout visait deux objectifs majeurs :
+
+1. Construire un pipeline de préparation de données (ETL) pour modéliser une vue unifiée à 360° ("Gold Table") à partir de données brutes.
+2. Analyser visuellement cette donnée structurée pour extraire des _Business Insights_ tangibles prouvant la corrélation entre logistique et satisfaction.
 
 ### 🛠️ Action
 
-Pour résoudre ce problème, le script Python (`1_exploration.ipynb`) exécute les opérations suivantes :
+Le développement a été scindé en deux scripts Python :
 
-1. **Ingestion de Données :** Extraction des 3 tables majeures (Commandes, Clients, Avis) totalisant près de 100 000 lignes.
-2. **Data Cleaning & Typage :** Conversion des jalons logistiques du format texte brut vers des formats temporels calculables (`datetime`).
-3. **Feature Engineering :** Création du KPI `delivery_time_days` en calculant le delta entre la date d'achat et la date de livraison réelle.
-4. **Modélisation Relationnelle :** Consolidation des données via des jointures (Inner et Left Joins via Pandas) pour lier le profil géographique du client, les données de la commande et le score de satisfaction final.
-5. **Filtrage Opérationnel :** Exclusion du bruit statistique en ne conservant que les commandes au statut finalisé (`delivered`).
+**1. Data Engineering & ETL (`1_exploration.ipynb`) :**
+
+- **Ingestion :** Extraction des 3 tables majeures (Commandes, Clients, Avis) totalisant près de 100 000 lignes.
+- **Data Cleaning & Typage :** Conversion des jalons logistiques du format texte brut vers des formats temporels calculables (`datetime`).
+- **Feature Engineering :** Création du KPI `delivery_time_days` (delta entre achat et livraison réelle).
+- **Modélisation Relationnelle :** Consolidation via des jointures (Inner et Left Joins) pour lier le client, la commande et le score final.
+
+**2. Data Visualisation (`2_visualisation.ipynb`) :**
+
+- Génération de graphiques analytiques professionnels avec `matplotlib` et `seaborn`.
+- Analyse par segments (score d'évaluation) et par géographie (États brésiliens).
 
 ### 📈 Résultat (Result)
 
-Création d'un jeu de données analytique propre et optimisé (`data/olist_master_dataset.csv`). Ce fichier centralisé garantit l'intégrité des calculs de performance logistique et sert de source unique pour la création du tableau de bord exécutif sur Tableau.
+Création d'un jeu de données analytique propre (`data/olist_master_dataset.csv`) et mise en évidence de recommandations stratégiques grâce au Data Storytelling.
+
+---
+
+## 📊 Visualisations et Insights Métier
+
+**1. La rapidité est la clé de la rétention**
+L'analyse démontre une corrélation directe : les clients insatisfaits (1 étoile) subissent des délais dépassant 20 jours en moyenne. À l'inverse, l'excellence logistique (délais inférieurs à 11 jours) est le prérequis pour obtenir la note maximale.
+![Impact Délai Satisfaction](data/impact_delai_note.png)
+
+**2. Disparités régionales critiques**
+L'analyse géographique révèle de fortes frictions dans des États comme Roraima (RR) ou Amapá (AP), avec des délais moyens dépassant les 25 jours. Ces zones justifient prioritairement l'ouverture de centres de distribution relais.
+![Top 10 Frictions Logistiques](data/top_10_etats_delais.png)
 
 ---
 
