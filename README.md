@@ -46,11 +46,11 @@ Création d'un jeu de données analytique propre (`data/olist_master_dataset.csv
 
 **1. La rapidité est la clé de la rétention**
 L'analyse démontre une corrélation directe : les clients insatisfaits (1 étoile) subissent des délais dépassant 20 jours en moyenne. À l'inverse, l'excellence logistique (délais inférieurs à 11 jours) est le prérequis pour obtenir la note maximale.
-![Impact Délai Satisfaction](data/impact_delai_note.png)
+![Impact Délai Satisfaction](assets/impact_delai_note.png)
 
 **2. Disparités régionales critiques**
 L'analyse géographique révèle de fortes frictions dans des États comme Roraima (RR) ou Amapá (AP), avec des délais moyens dépassant les 25 jours. Ces zones justifient prioritairement l'ouverture de centres de distribution relais.
-![Top 10 Frictions Logistiques](data/top_10_etats_delais.png)
+![Top 10 Frictions Logistiques](assets/top_10_etats_delais.png)
 
 ---
 
@@ -60,6 +60,6 @@ Ce projet respecte les bonnes pratiques de développement en utilisant un enviro
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone [https://github.com/AdamaSANE/olist-logistics-analytics.git](https://github.com/AdamaSANE/olist-logistics-analytics.git)
+   git clone https://github.com/AdamaSANE/olist-logistics-analytics.git
    cd olist-logistics-analytics
    ```
